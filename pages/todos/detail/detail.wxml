@@ -1,0 +1,37 @@
+<cu-custom bgColor="bg-cyan" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">工单详情</view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <view class="cu-list menu sm-border card-menu margin-top">
+    <navigator url="/pages/todos/process/process" class="cu-item arrow">
+      <view class="content">
+        <text class="cuIcon-circlefill text-grey"></text>
+        <text class="text-grey">单选题</text>
+      </view>
+      </navigator>
+
+    <view class="cu-item arrow  margin-top">
+      <view class="content">
+        <text class="cuIcon-circlefill text-grey"></text>
+        <text class="text-grey">多选题</text>
+      </view>
+    </view>
+
+    <view class="cu-item arrow  margin-top">
+      <view class="content">
+        <text class="cuIcon-circlefill text-grey"></text>
+        <text class="text-grey">判断题</text>
+      </view>
+    </view>
+
+    <view class="cu-item arrow  margin-top">
+      <view class="content">
+        <text class="cuIcon-circlefill text-grey"></text>
+        <text class="text-grey">简答题</text>
+      </view>
+    </view>
+  </view>
+  <view class='cu-tabbar-height'></view>
+</scroll-view>
