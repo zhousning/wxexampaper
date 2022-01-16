@@ -12,27 +12,27 @@ Component({
     skin: false,
     iconList: [{
       icon: 'cardboardfill',
-      color: 'red',
+      color: 'blue',
       badge: 120,
       name: 'VR'
     }, {
       icon: 'recordfill',
-      color: 'orange',
+      color: 'blue',
       badge: 1,
       name: '录像'
     }, {
       icon: 'picfill',
-      color: 'yellow',
+      color: 'blue',
       badge: 0,
       name: '图像'
     }, {
       icon: 'noticefill',
-      color: 'olive',
+      color: 'blue',
       badge: 22,
       name: '通知'
     }, {
       icon: 'upstagefill',
-      color: 'cyan',
+      color: 'blue',
       badge: 0,
       name: '排行榜'
     }, {
@@ -42,22 +42,22 @@ Component({
       name: '皮肤'
     }, {
       icon: 'discoverfill',
-      color: 'purple',
+      color: 'blue',
       badge: 0,
       name: '发现'
     }, {
       icon: 'questionfill',
-      color: 'mauve',
+      color: 'blue',
       badge: 0,
       name: '帮助'
     }, {
       icon: 'commandfill',
-      color: 'purple',
+      color: 'blue',
       badge: 0,
       name: '问答'
     }, {
       icon: 'brandfill',
-      color: 'mauve',
+      color: 'blue',
       badge: 0,
       name: '版权'
     }],

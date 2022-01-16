@@ -1,14 +1,14 @@
 <scroll-view scroll-y class="scrollPage">
 
-  <view class="cu-bar bg-white solid-bottom margin-top">
+<!--   <view class="cu-bar bg-white solid-bottom margin-top">
     <view class="action">
       <text class="cuIcon-title text-orange "></text> 宫格列表
     </view>
     <view class="action">
       <button class="cu-btn bg-green shadow" bindtap="showModal" data-target="gridModal">设置</button>
     </view>
-  </view>
-  <view class="cu-list grid col-{{gridCol}}">
+  </view> -->
+  <view class="cu-list grid col-{{gridCol}} margin">
     <view class="cu-item" wx:for="{{iconList}}" wx:key wx:if="{{index<gridCol*2}}">
       <navigator url="/pages/todos/detail/detail">
         <view class="cuIcon-{{item.icon}} text-{{item.color}}">

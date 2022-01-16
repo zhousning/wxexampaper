@@ -1,0 +1,35 @@
+{
+  "time": "2022-01-15",
+  "items": {
+    "1" : {
+      "title": "1、安全生产法是给哪个部门的？",
+      "options": [
+        {"id": 0, "tag": "A", "content": "安全部门"},
+        {"id": 1, "tag": "B", "content": "水务部门"},
+        {"id": 2, "tag": "C", "content": "监察部门"},
+        {"id": 3, "tag": "D", "content": "工程部门"}
+      ],
+      "answer": "B"
+    },
+    "2" : {
+      "title": "2、安全生产法是给哪个部门的？",
+      "options": [
+        {"id": 0, "tag": "A", "content": "安全部门"},
+        {"id": 1, "tag": "B", "content": "水务部门"},
+        {"id": 2, "tag": "C", "content": "监察部门"},
+        {"id": 3, "tag": "D", "content": "工程部门"}
+      ],
+      "answer": "A"
+    },
+    "3" : {
+      "title": "3、安全生产法是给哪个部门的？",
+      "options": [
+        {"id": 0, "tag": "A", "content": "安全部门"},
+        {"id": 1, "tag": "B", "content": "水务部门"},
+        {"id": 2, "tag": "C", "content": "监察部门"},
+        {"id": 3, "tag": "D", "content": "工程部门"}
+      ],
+      "answer": "C"
+    }
+  }
+}
