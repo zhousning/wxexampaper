@@ -11,21 +11,26 @@
     </view>
   </view>
 
-  <radio-group bindchange="getAnswer" class="cu-list menu sm-border card-menu margin">
-      <view class="cu-item margin-top" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
-        <label class="action content">
-          <radio class="margin-right-sm blue sm radio" value="{{item.value}}"></radio>
-          <text>{{item.content}}</text>
-        </label>
-      </view>
+  <radio-group bindchange="getAnswer" data-trueval="{{questions[current].answer}}" class="cu-list menu sm-border card-menu margin">
+    <view class="cu-item margin-top" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
+      <label class="action content ">
+        <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{answer == item.value}}"></radio>
+        <text class="{{myAnswer == item.value ? 'text-green' : ''}}">{{item.value + ' ' + item.content}}</text>
+      </label>
+    </view>
   </radio-group>
 
-   <view class="box padding-top">
-    <view class="cu-bar btn-group">
-      <button class="cu-btn bg-blue shadow-blur round" bindtap="previousQes" disabled="{{previous_disabled}}">上一题</button>
-      <button class="cu-btn bg-blue shadow-blur round" bindtap="nextQes" disabled="{{next_disabled}}">下一题</button>
-    </view>
+  <view class="margin">
+    <button bindtap="showTrueAnswer" class="bg-green margin-bottom">正确答案</button>
+    <text hidden="{{hiddenTrueAnswer}}" class="text-lg text-blue ">正确答案：{{questions[current].answer}}</text>
   </view>
-  <!-- <order-card></order-card>
-<view class='cu-tabbar-height'></view> -->
+  <view class='cu-tabbar-height'></view>
+  <!-- <order-card></order-card>-->
 </scroll-view>
+
+<view class="box padding-top cu-bar tabbar foot">
+  <view class="cu-bar btn-group">
+    <button class="cu-btn bg-blue shadow-blur round" bindtap="previousQes" disabled="{{previous_disabled}}">上一题</button>
+    <button class="cu-btn bg-blue shadow-blur round" bindtap="nextQes" disabled="{{next_disabled}}">下一题</button>
+  </view>
+</view>
