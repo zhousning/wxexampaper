@@ -31,22 +31,22 @@ Page({
     var qes_type = [{
         'icon': 'ticket',
         'title': '单选题',
-        'url': '/pages/todos/process/process?type=single&qes_lib=' + qes_lib
+        'url': '/pages/todos/qes_show/qes_show?type=singles&qes_lib=' + qes_lib
       },
       {
         'icon': 'selection',
         'title': '多选题',
-        'url': '/pages/todos/process/process?type=mcq&qes_lib=' + qes_lib
+        'url': '/pages/todos/qes_show/qes_show?type=mcqs&qes_lib=' + qes_lib
       },
       {
         'icon': 'choiceness',
         'title': '判断题',
-        'url': '/pages/todos/process/process?type=tof&qes_lib=' + qes_lib
+        'url': '/pages/todos/qes_show/qes_show?type=tofs&qes_lib=' + qes_lib
       },
       {
         'icon': 'upstage',
         'title': '问答题',
-        'url': '/pages/todos/process/process?type=qaa&qes_lib=' + qes_lib
+        'url': '/pages/todos/qes_show/qes_show?type=qaas&qes_lib=' + qes_lib
       }
     ]
     that.setData({

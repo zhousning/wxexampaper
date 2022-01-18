@@ -59,7 +59,7 @@ Component({
           var iconList = [];
           for (var i = 0; i < objs.length; i++) {
             iconList.push({
-              url: '/pages/todos/detail/detail?qes_lib=' + objs[i].id,
+              url: '/pages/todos/qes_index/qes_index?qes_lib=' + objs[i].id,
               icon: 'cardboardfill',
               color: 'blue',
               badge: 1,

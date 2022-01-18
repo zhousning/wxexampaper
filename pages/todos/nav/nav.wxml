@@ -7,7 +7,6 @@
 
 </scroll-view>
 
-<pend wx:if="{{TabCur==0}}"></pend>
-<process wx:if="{{TabCur==1}}"></process>
+
 <confirm wx:if="{{TabCur==2}}"></confirm>
 <complete wx:if="{{TabCur==3}}"></complete>
