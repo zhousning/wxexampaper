@@ -38,6 +38,17 @@ Component({
     wx.hideLoading()
   },
   methods: {
+    logout() {
+      var openid = wx.getStorageSync('openid')
+      if (openid) {
+          wx.removeStorageSync('openid');
+          wx.removeStorageSync('name');
+          wx.redirectTo({
+            url: '/pages/login/login'
+          })
+          return;
+        }
+  },
     coutNum(e) {
       if (e > 1000 && e < 10000) {
         e = (e / 1000).toFixed(1) + 'k'

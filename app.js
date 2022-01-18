@@ -2,34 +2,8 @@ const setting = require('./utils/setting')
 
 // app.js
 App({
-  onLaunch: function () {},
-  globalData: {
-    userInfo: null
-  },
-  createShareMessage: function () {
-    var message = {
-      title: '山东公用水务集团生产运营智能平台',
-      imageUrl: './images/swjtlogo.png',
-      path: 'index/index'
-    }
-    return message;
-  }
-  
-/*   onLaunch() {
+  onLaunch: function() {
     var that = this;
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        console.log(res.code)
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-
     wx.getSystemInfo({
       success: e => {
         that.globalData.StatusBar = e.statusBarHeight;
@@ -41,7 +15,6 @@ App({
   },
   globalData: {
     userInfo: null,
-    setting: setting.setting,
     ColorList: [{
       title: '嫣红',
       name: 'red',
@@ -118,5 +91,36 @@ App({
       color: '#ffffff'
     },
   ]
-  } */
+  },
+  createShareMessage: function () {
+    var message = {
+      title: '山东公用水务集团生产运营智能平台',
+      imageUrl: './images/swjtlogo.png',
+      path: 'index/index'
+    }
+    return message;
+  }
+
+  /* onLaunch() {
+      var that = this;
+      // 展示本地存储能力
+      const logs = wx.getStorageSync('logs') || []
+      logs.unshift(Date.now())
+      wx.setStorageSync('logs', logs)
+
+      // 登录
+      wx.login({
+        success: res => {
+          console.log(res.code)
+          // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        }
+      })
+
+
+    },
+    globalData: {
+      userInfo: null,
+      setting: setting.setting,
+      
+    } */
 })

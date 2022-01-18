@@ -3,33 +3,12 @@
   <view slot="content">题目</view>
 </cu-custom>
 <view class="cu-list menu sm-border card-menu margin-top">
-    <navigator url="/pages/todos/process/process" class="cu-item arrow">
+    <navigator wx:for="{{qes_type}}" url="{{item.url}}" class="cu-item arrow margin-top">
       <view class="content">
-        <text class="cuIcon-ticket text-blue"></text>
-        <text class="text-blue">单选题</text>
+        <text class="cuIcon-{{item.icon}} text-blue"></text>
+        <text class="text-blue">{{item.title}}</text>
       </view>
       </navigator>
-
-    <view class="cu-item arrow  margin-top">
-      <view class="content">
-        <text class="cuIcon-selection text-blue"></text>
-        <text class="text-blue">多选题</text>
-      </view>
-    </view>
-
-    <view class="cu-item arrow  margin-top">
-      <view class="content">
-        <text class="cuIcon-choiceness text-blue"></text>
-        <text class="text-blue">判断题</text>
-      </view>
-    </view>
-
-    <view class="cu-item arrow  margin-top">
-      <view class="content">
-        <text class="cuIcon-upstage text-blue"></text>
-        <text class="text-blue">简答题</text>
-      </view>
-    </view>
   </view>
 <!-- <scroll-view scroll-y class="scrollPage">
 
