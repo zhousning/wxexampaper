@@ -1,4 +1,5 @@
 // pages/todos/process/process.js
+const config = require("../../../utils/setting")
 const app = getApp()
 
 Component({
@@ -27,18 +28,6 @@ Component({
       id: 3,
       type: 'image',
       url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
-    }, {
-      id: 4,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big25011.jpg'
-    }, {
-      id: 5,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big21016.jpg'
-    }, {
-      id: 6,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big99008.jpg'
     }],
     iconList: [{
       icon: 'cardboardfill',
@@ -95,6 +84,45 @@ Component({
   lifetimes: {
     attached: function() {
       //this.towerSwiper('swiperList'); // 初始化towerSwiper 传已有的数组名即可
+      wx.showLoading({
+        title: '数据加载中',
+      })
+      var that = this;
+      var openid = wx.getStorageSync('openid');
+      if (!openid) {
+        wx.redirectTo({
+          url: '/pages/login/login'
+        })
+        return;
+      }
+      wx.request({
+        url: config.routes.host + '/qes_banks/query_all',
+        header: {
+          'Accept': "*/*",
+          'content-type': 'application/json' // 默认值
+        },
+        data: {
+          openid: openid
+        },
+        success: function (res) {
+          var objs = res.data.results;
+          var day_rpts = [];
+          for (var i = 0; i < objs.length; i++) {
+            day_rpts.push({
+              url: '/pages/day_rpt/day_rpt?fct=' + objs[i].fct + '&day_pdt=' + objs[i].day_pdt + '&state=' + objs[i].state + '&jd=' + objs[i].jd,
+              factory: objs[i].name,
+              state: objs[i].state
+            })
+          }
+          that.setData({
+            day_rpts: day_rpts
+          })
+          wx.hideLoading();
+        },
+        fail: function () {
+          wx.hideLoading();
+        }
+      })
     }
   },
   methods: {

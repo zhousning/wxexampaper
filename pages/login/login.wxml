@@ -1,27 +1,24 @@
-<!--index.wxml-->
-<cu-custom bgColor="bg-gradual-blue">
-   <view slot="content">ColorUI 空白模板</view>
-</cu-custom>
-<view class="container">
-  <view class="userinfo">
-    <block wx:if="{{canIUseOpenData}}">
-      <view class="userinfo-avatar" bindtap="bindViewTap">
-        <open-data type="userAvatarUrl"></open-data>
+
+  <view class="UCenter-bg">
+    <image src="/images/swjtlogo.png" class="png" mode="widthFix"></image>
+    <view class="text-blue text-xl margin-top">E-Learning 客户端
+    </view>
+  </view>
+  <form>
+    <view class="margin-lr">
+      <view class="cu-form-group margin-top">
+        <view class="title">账号</view>
+        <input placeholder="填写账号" name="username" bindinput="usernameInput" />
       </view>
-      <open-data type="userNickName"></open-data>
-    </block>
-    <block wx:elif="{{!hasUserInfo}}">
-      <button wx:if="{{canIUseGetUserProfile}}" bindtap="getUserProfile"> 获取头像昵称 </button>
-      <button wx:elif="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-      <view wx:else> 请使用1.4.4及以上版本基础库 </view>
-    </block>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
-    </block>
-  </view>
-  <view class="usermotto">
-    <button bindtap="hiddenTest">hiddenTest</button>
-    <text class="user-motto">{{motto}}</text>
-  </view>
-</view>
+
+      <view class="cu-form-group">
+        <view class="title">密码</view>
+        <input placeholder="填写密码" name="password" type="password" bindinput="passwordInput" />
+      </view>
+
+      <view class="padding flex flex-direction">
+        <button class="cu-btn bg-blue margin-tb-sm lg" bindtap="login">登 录</button>
+      </view>
+    </view>
+  </form>
+  <view class="copyright text-center margin-bottom">Copyright © 2020-2030 山东公用水务集团版权所有</view>

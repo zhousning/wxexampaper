@@ -1,42 +1,91 @@
-// index.js
-// 获取应用实例
+const config = require('../../utils/setting')
 const app = getApp()
 
 Page({
+  options: {
+    addGlobalClass: true
+  },
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    motto: 'Hello World',
-    userInfo: {},
-    hasUserInfo: false,
-    canIUse: wx.canIUse('button.open-type.getUserInfo'),
-    canIUseGetUserProfile: false,
-    canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName') // 如需尝试获取用户信息可改为false
+    username: '',
+    password: ''
   },
-  // 事件处理函数
-  bindViewTap() {
-    wx.navigateTo({
+  //事件处理函数
+  bindViewTap: function () {
+    /*wx.navigateTo({
       url: '../logs/logs'
+    })*/
+  },
+  onShow: function () {
+    // 生命周期函数--监听页面显示
+  },
+
+  // 获取输入账号 
+  usernameInput: function (e) {
+    this.setData({
+      username: e.detail.value
     })
   },
-  onLoad() {
-    if (wx.getUserProfile) {
-      this.setData({
-        canIUseGetUserProfile: true
+
+  // 获取输入密码 
+  passwordInput: function (e) {
+    this.setData({
+      password: e.detail.value
+    })
+  },
+
+  // 登录处理
+  login: function () {
+    var that = this;
+    if (this.data.username.length == 0 || this.data.password.length == 0) {
+      wx.showToast({
+        title: '账号或密码不能为空',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      wx.showLoading({
+        title: '系统正在处理中...',
+      })
+      wx.request({
+        url: config.routes.getUserId,
+        method: 'post',
+        data: {
+          username: that.data.username,
+          password: that.data.password
+        },
+        header: {
+          'Accept': "*/*",
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          var openid = res.data.openid
+          var name = res.data.user_name
+          wx.hideLoading();
+          if (openid) {
+            wx.setStorageSync('openid', openid);
+            wx.setStorageSync('name', name);
+            wx.redirectTo({
+              url: '/pages/index/index'
+            })
+          } else {
+            wx.showToast({
+              title: '用户名或密码错误',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        },
+        fail: function () {
+          wx.hideLoading();
+          wx.showToast({
+            title: '登录失败,请重新登录',
+            icon: 'none',
+            duration: 2000
+          })
+        }
       })
     }
-  },
-  getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        console.log(res)
-        this.setData({
-          userInfo: res.userInfo,
-          hasUserInfo: true
-        })
-      }
-    })
   }
 })

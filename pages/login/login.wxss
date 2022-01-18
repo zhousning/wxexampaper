@@ -1,19 +1,33 @@
-/**index.wxss**/
-.userinfo {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #aaa;
+/* pages/login/login.wxss */
+
+page {
+    height: 100%;
+    background: white;
 }
 
-.userinfo-avatar {
-  overflow: hidden;
-  width: 128rpx;
-  height: 128rpx;
-  margin: 20rpx;
-  border-radius: 50%;
+.weui-label {
+    width: 4.1em
 }
 
-.usermotto {
-  margin-top: 200px;
+.UCenter-bg {
+    background-image: url(https://image.weilanwl.com/color2.0/index.jpg);
+    background-size: cover;
+    height: 500rpx;
+    display: flex;
+    justify-content: center;
+    padding-top: 40rpx;
+    overflow: hidden;
+    position: relative;
+    flex-direction: column;
+    align-items: center;
+}
+
+.UCenter-bg text {
+    opacity: 0.8;
+}
+
+.copyright {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
 }

@@ -2,7 +2,20 @@ const setting = require('./utils/setting')
 
 // app.js
 App({
-  onLaunch() {
+  onLaunch: function () {},
+  globalData: {
+    userInfo: null
+  },
+  createShareMessage: function () {
+    var message = {
+      title: '山东公用水务集团生产运营智能平台',
+      imageUrl: './images/swjtlogo.png',
+      path: 'index/index'
+    }
+    return message;
+  }
+  
+/*   onLaunch() {
     var that = this;
     // 展示本地存储能力
     const logs = wx.getStorageSync('logs') || []
@@ -105,5 +118,5 @@ App({
       color: '#ffffff'
     },
   ]
-  }
+  } */
 })
