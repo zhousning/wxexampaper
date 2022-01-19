@@ -3,13 +3,13 @@
   <view slot="content">题目</view>
 </cu-custom>
 <view class="cu-list menu sm-border card-menu margin-top">
-    <navigator wx:for="{{qes_type}}" url="{{item.url}}" class="cu-item arrow margin-top">
-      <view class="content">
-        <text class="cuIcon-{{item.icon}} text-blue"></text>
-        <text class="text-blue">{{item.title}}</text>
-      </view>
-      </navigator>
-  </view>
+  <navigator wx:for="{{qes_type}}" url="{{item.url}}" class="cu-item arrow margin-top">
+    <view class="content">
+      <text class="cuIcon-{{item.icon}} text-blue"></text>
+      <text class="text-blue">{{item.title}}</text>
+    </view>
+  </navigator>
+</view>
 <!-- <scroll-view scroll-y class="scrollPage">
 
   <view class='cu-tabbar-height'></view>

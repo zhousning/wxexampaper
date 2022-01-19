@@ -1,4 +1,9 @@
 
+  <cu-custom bgColor="bg-blue" isBack="{{false}}">
+  <view slot="backText">返回</view>
+  <view slot="content">登录</view>
+</cu-custom>
+
   <view class="UCenter-bg">
     <image src="/images/swjtlogo.png" class="png" mode="widthFix"></image>
     <view class="text-blue text-xl margin-top">E-Learning 客户端
