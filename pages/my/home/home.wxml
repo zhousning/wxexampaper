@@ -1,6 +1,6 @@
 <scroll-view scroll-y class="scrollPage">
   <view class="UCenter-bg">
-    <image src="../../../images/gykglogo.jpg" class="png" mode="widthFix"></image>
+    <image src="https://636c-cloud1-6gqvn1deb6d48dd5-1309064836.tcb.qcloud.la/gykglogo.jpg?sign=ed06a053b02e781c4cba27ed0912702c&t=1642579461" class="png" mode="widthFix"></image>
     <view class="text-xl margin-top-sm">山东公用水务集团E-Learning系统
       <!-- <text class="text-df">v1.0</text> -->
     </view>

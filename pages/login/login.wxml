@@ -5,7 +5,7 @@
 </cu-custom>
 
   <view class="UCenter-bg">
-    <image src="/images/swjtlogo.png" class="png" mode="widthFix"></image>
+    <image src="https://636c-cloud1-6gqvn1deb6d48dd5-1309064836.tcb.qcloud.la/swjtlogo.png?sign=75e8a8fc41a041aafe3c891c57af0d15&t=1642578997" class="png" mode="widthFix"></image>
     <view class="text-black text-xl margin-top">E-Learning 客户端
     </view>
 
