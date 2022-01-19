@@ -90,6 +90,30 @@ App({
       name: 'white',
       color: '#ffffff'
     },
+  ],
+  colors: [
+    'cyan',
+    'blue',
+    'purple',
+    'mauve',
+    'pink',
+    'brown',
+    'red',
+    'orange',
+    'olive',
+    'green'
+  ],
+  IconList: [
+    'newsfill',
+    'colorlens',
+    'font',
+    'icon',
+    'btn',
+    'tagfill',
+    'myfill',
+    'icloading',
+    'copy',
+    'loading2'
   ]
   },
   createShareMessage: function () {

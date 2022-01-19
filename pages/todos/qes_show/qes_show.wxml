@@ -1,5 +1,5 @@
 <cu-custom bgColor="bg-blue" isBack="{{true}}">
-  <view slot="backText">返回</view>
+  <view slot="backText"></view>
   <view slot="content">答题</view>
 </cu-custom>
 
@@ -10,7 +10,6 @@
       <text>{{questions[current].title}}</text>
     </view>
   </view>
-
 
   <radio-group wx:if="{{qes_type != '多选题'}}" bindchange="getAnswer" data-trueval="{{questions[current].answer}}" class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">

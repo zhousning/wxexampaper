@@ -6,8 +6,9 @@
 
   <view class="UCenter-bg">
     <image src="/images/swjtlogo.png" class="png" mode="widthFix"></image>
-    <view class="text-blue text-xl margin-top">E-Learning 客户端
+    <view class="text-black text-xl margin-top">E-Learning 客户端
     </view>
+
   </view>
   <form>
     <view class="margin-lr">

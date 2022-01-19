@@ -1,8 +1,5 @@
 /* pages/login/login.wxss */
 
-page {
-    background-color: white;
-}
 
 .weui-label {
     width: 4.1em

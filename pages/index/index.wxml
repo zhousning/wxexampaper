@@ -15,7 +15,7 @@
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/done{{PageCur=='done'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='done'?'text-blue':'text-gray'}}">收藏夹</view>
+    <view class="{{PageCur=='done'?'text-blue':'text-gray'}}">书架</view>
   </view>
 
 <!--   <view class="action text-gray add-action">
@@ -28,12 +28,12 @@
       扫一扫
     </view> -->
 
-  <view class="action" bindtap="NavChange" data-cur="market">
+  <!-- <view class="action" bindtap="NavChange" data-cur="market">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/market{{PageCur=='market'?'_cur':''}}.png"></image>
     </view>
     <view class="{{PageCur=='market'?'text-blue':'text-gray'}}">错题本</view>
-  </view>
+  </view> -->
   
   <view class="action" bindtap="NavChange" data-cur="my">
     <view class='cuIcon-cu-image'>

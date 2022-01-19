@@ -6,6 +6,7 @@ Component({
     starCount: 0,
     forksCount: 0,
     visitTotal: 0,
+    username: null
   },
   attached() {
     console.log("success")
@@ -14,6 +15,7 @@ Component({
       title: '数据加载中',
       mask: true,
     })
+    var name = wx.getStorageSync('name');
     let i = 0;
     numDH();
     function numDH() {
@@ -22,7 +24,8 @@ Component({
           that.setData({
             starCount: i,
             forksCount: i,
-            visitTotal: i
+            visitTotal: i,
+            username: name
           })
           i++
           numDH();
@@ -31,7 +34,8 @@ Component({
         that.setData({
           starCount: that.coutNum(3000),
           forksCount: that.coutNum(484),
-          visitTotal: that.coutNum(24000)
+          visitTotal: that.coutNum(24000),
+          username: name
         })
       }
     }

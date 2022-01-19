@@ -9,31 +9,26 @@ Component({
   data: {
     StatusBar: app.globalData.StatusBar,
     CustomBar: app.globalData.CustomBar,
-    gridCol:3,
+    gridCol:2,
     skin: false,
     cardCur: 0,
     swiperList: [{
       id: 0,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84000.jpg'
+      url: '../../../images/swiper0001.png'
     }, {
       id: 1,
         type: 'image',
-        url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big84001.jpg',
-    }, {
-      id: 2,
-      type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big39000.jpg'
-    }, {
+        url: '../../../images/swiper0002.png'
+    },{
       id: 3,
       type: 'image',
-      url: 'https://ossweb-img.qq.com/images/lol/web201310/skin/big10001.jpg'
+      url: '../../../images/swiper0005.png'
     }],
     iconList: [],
   },
   lifetimes: {
     attached: function() {
-      //this.towerSwiper('swiperList'); // 初始化towerSwiper 传已有的数组名即可
       wx.showLoading({
         title: '数据加载中',
       })
@@ -60,10 +55,11 @@ Component({
           for (var i = 0; i < objs.length; i++) {
             iconList.push({
               url: '/pages/todos/qes_index/qes_index?qes_lib=' + objs[i].id,
-              icon: 'cardboardfill',
-              color: 'blue',
+              icon: app.globalData.IconList[i],
+              color: app.globalData.colors[i],
               badge: 1,
-              name: objs[i].name
+              name: i+1+'',
+              title: objs[i].name
             })
           }
           that.setData({
