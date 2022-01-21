@@ -1,7 +1,0 @@
-{
-  "component": true,
-  "usingComponents": {
-    "confirm": "/pages/todos/confirm/confirm",
-    "complete": "/pages/todos/complete/complete"
-  }
-}

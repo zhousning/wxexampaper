@@ -1,4 +1,0 @@
-/* pages/todos/pend/pend.wxss */
-page {
-    background-color: white;
-}
