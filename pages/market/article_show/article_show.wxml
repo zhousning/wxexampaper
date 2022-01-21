@@ -1,4 +1,4 @@
-<cu-custom bgColor="bg-blue" isBack="{{true}}">
+<cu-custom bgColor="bg-gradual-pink" isBack="{{true}}">
     <view slot="backText">返回</view>
     <view slot="content">{{article.title}}</view>
 </cu-custom>
@@ -12,7 +12,7 @@
                 <view class="padding text-gray">{{article.dept}} {{article.date}}</view>
             </view>
         </view>
-        <view class="padding-lr text-content article-content">
+        <view class="padding-lr text-content article-content text-lg">
             <rich-text nodes="{{article.content}}"></rich-text>
         </view> 
     </view>
