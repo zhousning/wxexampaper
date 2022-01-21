@@ -28,12 +28,12 @@
       扫一扫
     </view> -->
 
-  <!-- <view class="action" bindtap="NavChange" data-cur="market">
+ <view class="action" bindtap="NavChange" data-cur="market">
     <view class='cuIcon-cu-image'>
       <image src="/images/tabbar/market{{PageCur=='market'?'_cur':''}}.png"></image>
     </view>
-    <view class="{{PageCur=='market'?'text-blue':'text-gray'}}">错题本</view>
-  </view> -->
+    <view class="{{PageCur=='market'?'text-blue':'text-gray'}}">学习</view>
+  </view> 
   
   <view class="action" bindtap="NavChange" data-cur="my">
     <view class='cuIcon-cu-image'>

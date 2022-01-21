@@ -1,0 +1,20 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+    <view slot="backText">返回</view>
+    <view slot="content">{{article.title}}</view>
+</cu-custom>
+<scroll-view scroll-y class="scrollPage">
+    <view>
+        <view class="padding-xs flex align-center">
+            <view class="flex-sub text-center">
+                <view class="text-xl padding-top padding-lr">
+                    <text class="text-black text-bold">{{article.title}}</text>
+                </view>
+                <view class="padding text-gray">{{article.dept}} {{article.date}}</view>
+            </view>
+        </view>
+        <view class="padding">
+            <rich-text nodes="{{article.content}}"></rich-text>
+        </view>
+    </view>
+
+</scroll-view>

@@ -15,6 +15,7 @@ App({
   },
   globalData: {
     userInfo: null,
+    setting: setting,
     ColorList: [{
       title: '嫣红',
       name: 'red',
@@ -141,10 +142,5 @@ App({
       })
 
 
-    },
-    globalData: {
-      userInfo: null,
-      setting: setting.setting,
-      
     } */
 })
