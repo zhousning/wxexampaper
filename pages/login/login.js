@@ -1,4 +1,3 @@
-const config = require('../../utils/setting')
 const app = getApp()
 
 Page({
@@ -44,7 +43,7 @@ Page({
         title: '系统正在处理中...',
       })
       wx.request({
-        url: config.routes.getUserId,
+        url:  app.globalData.setting.routes.getUserId,
         method: 'post',
         data: {
           username: that.data.username,

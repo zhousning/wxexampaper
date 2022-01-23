@@ -1,22 +1,22 @@
 {
-    "pages": [
-        "pages/index/index",
-        "pages/login/login",
-        "pages/todos/home/home",
-        "pages/todos/qes_index/qes_index",
-        "pages/todos/qes_show/qes_show",
-        "pages/done/home/home",
-        "pages/my/home/home",
-        "pages/done/repair/repair",
-        "pages/market/home/home",
-        "pages/market/article_show/article_show"
-    ],
-    "window": {
-        "navigationStyle": "custom"
-    },
-    "usingComponents": {
-        "cu-custom": "/colorui/components/cu-custom"
-    },
-    "lazyCodeLoading": "requiredComponents",
-    "sitemapLocation": "sitemap.json"
+  "pages": [
+    "pages/index/index",
+    "pages/login/login",
+    "pages/todos/home/home",
+    "pages/todos/qes_index/qes_index",
+    "pages/todos/qes_show/qes_show",
+    "pages/my/home/home",
+    "pages/market/home/home",
+    "pages/market/article_show/article_show",
+    "pages/done/home/home",
+    "pages/done/exam/exam"
+  ],
+  "window": {
+    "navigationStyle": "custom"
+  },
+  "usingComponents": {
+    "cu-custom": "/colorui/components/cu-custom"
+  },
+  "lazyCodeLoading": "requiredComponents",
+  "sitemapLocation": "sitemap.json"
 }

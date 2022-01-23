@@ -1,4 +1,3 @@
-const config = require('../../../utils/setting')
 const app = getApp()
 Page({
   options: {
@@ -87,7 +86,7 @@ Page({
       title: '数据加载中',
     })
     wx.request({
-      url: config.routes.host + '/qes_banks/' + qes_lib + '/' + type + '/query_all',
+      url:  app.globalData.setting.routes.host + '/qes_banks/' + qes_lib + '/' + type + '/query_all',
       header: {
         'Accept': "*/*",
         'content-type': 'application/json' // 默认值
@@ -122,33 +121,5 @@ Page({
         wx.hideLoading();
       }
     })
-  },
-
-  onReady: function () {
-
-  },
-
-  onShow: function () {
-
-  },
-
-  onHide: function () {
-
-  },
-
-  onUnload: function () {
-
-  },
-
-  onPullDownRefresh: function () {
-
-  },
-
-  onReachBottom: function () {
-
-  },
-
-  onShareAppMessage: function () {
-
   }
 })
