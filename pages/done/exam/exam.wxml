@@ -4,9 +4,12 @@
 </cu-custom>
 
 <scroll-view scroll-y class="scrollPage">
-  <view class="cu-bar bg-white solid-bottom">
-    <view class="action">
+  <view class="cu-bar bg-white solid-bottom flex justify-between padding-right">
+    <view class="action ">
       <text class="cuIcon-title text-red ">剩余时间：{{wxTimer}}</text> 
+    </view>
+    <view>
+      <button bindtap="hand_paper" class="cu-btn bg-blue shadow-blur ">交卷</button>
     </view>
   </view>
 
@@ -19,29 +22,30 @@
     </view>
   </view>
 
-  <radio-group wx:if="{{questions[current].type != '1'}}" bindchange="getAnswer" data-trueval="{{questions[current].answer}}" class="cu-list menu sm-border card-menu margin">
+  <radio-group wx:if="{{questions[current].type != '1'}}" bindchange="radioChange"  class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
       <label class="action content ">
-        <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{answer == item.value}}"></radio>
+        <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{item.checked}}"></radio>
+        <!-- <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{answer == item.value}}"></radio> -->
         <text >{{item.value + ' ' + item.content}}</text>
       </label>
     </view>
   </radio-group>
 
 <!--todos checkbox选中后的响应状态需要再改-->
-  <checkbox-group wx:if="{{questions[current].type == '1'}}" data-trueval="{{questions[current].answer}}" class="cu-list menu sm-border card-menu margin">
+  <checkbox-group wx:if="{{questions[current].type == '1'}}" bindchange="checkboxChange"   class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
       <label class="action content ">
-        <checkbox class="margin-right-sm blue sm" value="{{item.value}}" checked="{{answer == item.value}}"></checkbox>
+        <checkbox class="margin-right-sm blue sm" value="{{item.value}}" checked="{{item.checked}}"></checkbox>
         <text>{{item.value + ' ' + item.content  }}</text>
       </label>
     </view>
   </checkbox-group>
 
-  <view class="margin">
-    <!-- <button bindtap="showTrueAnswer" class="bg-green margin-bottom">正确答案</button> -->
+  <!-- <view class="margin">
+    <button bindtap="showTrueAnswer" class="bg-green margin-bottom">正确答案</button> 
     <text hidden="{{hiddenTrueAnswer}}" class="text-lg text-blue ">正确答案：{{questions[current].answer}}</text>
-  </view>
+  </view>-->
   <view class='cu-tabbar-height'></view>
 </scroll-view>
 

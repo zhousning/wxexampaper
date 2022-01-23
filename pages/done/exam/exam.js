@@ -12,30 +12,44 @@ Page({
     current: 0,
     previous: 0,
     next: 0,
-    qes_type: '',
-    answer: '', //用于换题后radio清空
-    myAnswer: '', //用于给正确答案显示绿色字体
     previous_disabled: true,
     next_disabled: false,
-    hiddenTrueAnswer: true,
-    time_remaining: null,
-    wxTimerList: {},
-    mypaper: []
+    wxTimerList: {}
   },
   globalObj: {
     wxTimer: null
   },
-  getAnswer(e) {
-    var trueAnswer = e.currentTarget.dataset.trueval
-    var answer = e.detail.value
-    var myAnswer = ''
-
-    if (trueAnswer == answer) {
-      myAnswer = answer
+  radioChange(e) {
+    let current = this.data.current
+    let questions = this.data.questions
+    let items = questions[current].options
+    for (let i = 0, len = items.length; i < len; ++i) {
+      items[i].checked = items[i].value === e.detail.value
     }
+
+    let options = 'questions[' +current + '].options'
     this.setData({
-      answer: answer,
-      myAnswer: myAnswer
+      [options]: items
+    })
+  },
+  checkboxChange(e) {
+    let current = this.data.current
+    let questions = this.data.questions
+    let items = questions[current].options
+    const values = e.detail.value
+    for (let i = 0, lenI = items.length; i < lenI; ++i) {
+      items[i].checked = false
+
+      for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (items[i].value === values[j]) {
+          items[i].checked = true
+          break
+        }
+      }
+    }
+    let options = 'questions[' +current + '].options'
+    this.setData({
+      [options]: items
     })
   },
   showTrueAnswer: function () {
@@ -47,10 +61,7 @@ Page({
     var val = this.data.current - 1
     this.setData({
       next_disabled: false,
-      answer: '',
-      current: val,
-      myAnswer: '',
-      hiddenTrueAnswer: true
+      current: val
     })
     if (val == 0) {
       this.setData({
@@ -65,13 +76,9 @@ Page({
   nextQes: function () {
     var val = this.data.current + 1
     var qes = this.data.questions
-    console.log('...')
     this.setData({
       previous_disabled: false,
-      answer: '',
-      current: val,
-      myAnswer: '',
-      hiddenTrueAnswer: true
+      current: val
     })
     if (val == qes.length - 1) {
       this.setData({
@@ -83,12 +90,14 @@ Page({
       })
     }
   },
+  hand_paper: function(){
+
+  },
 
   onLoad: function (options) {
     var that = this;
     that.setData({
-      questions: question.questions.items,
-      mypaper: question.questions.items
+      questions: question.questions.items
     })
     // // var openid = wx.getStorageSync('openid');
     // // var qes_lib = options.qes_lib;
