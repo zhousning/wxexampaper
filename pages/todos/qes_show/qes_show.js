@@ -10,24 +10,57 @@ Page({
     current: 0,
     previous: 0,
     next: 0,
-    qes_type: '',
     answer: '', //用于换题后radio清空
     myAnswer: '', //用于给正确答案显示绿色字体
     previous_disabled: true,
     next_disabled: false,
     hiddenTrueAnswer: true
   },
-  getAnswer(e) {
-    var trueAnswer = e.currentTarget.dataset.trueval
-    var answer = e.detail.value
-    var myAnswer = ''
-
-    if (trueAnswer == answer) {
-      myAnswer = answer
+  radioChange(e) {
+    let current = this.data.current
+    let questions = this.data.questions
+    let items = questions[current].options
+    for (let i = 0, len = items.length; i < len; ++i) {
+      if (items[i].value === e.detail.value) {
+        items[i].checked = true
+        if (items[i].true_answer) {
+          items[i].answer_true = true
+        } else {
+          items[i].answer_false = true
+        }
+      } else {
+        items[i].checked = false
+      }
     }
+
+    let options = 'questions[' +current + '].options'
     this.setData({
-      answer: answer,
-      myAnswer: myAnswer
+      [options]: items
+    })
+  },
+  checkboxChange(e) {
+    let current = this.data.current
+    let questions = this.data.questions
+    let items = questions[current].options
+    const values = e.detail.value
+    for (let i = 0, lenI = items.length; i < lenI; ++i) {
+      items[i].checked = false
+
+      for (let j = 0, lenJ = values.length; j < lenJ; ++j) {
+        if (items[i].value === values[j]) {
+          items[i].checked = true
+          if (items[i].true_answer) {
+            items[i].answer_true = true
+          } else {
+            items[i].answer_false = true
+          }
+          break
+        }
+      }
+    }
+    let options = 'questions[' +current + '].options'
+    this.setData({
+      [options]: items
     })
   },
   showTrueAnswer: function () {
@@ -96,24 +129,9 @@ Page({
       },
       success: function (res) {
         var objs = res.data;
-        var qes_type = '';
-        switch (type) {
-          case 'singles':
-            qes_type = '单选题'
-            break;
-            case 'mcqs':
-            qes_type = '多选题'
-            break;
-            case 'tofs':
-            qes_type = '判断题'
-            break;
-            case 'qaas':
-            qes_type = '问答题'
-            break;
-        }
+
         that.setData({
-          questions: objs,
-          qes_type: qes_type
+          questions: objs
         })
         wx.hideLoading();
       },
