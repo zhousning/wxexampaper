@@ -3,6 +3,7 @@
     "todos": "/pages/todos/home/home",
     "done": "/pages/done/home/home",
     "market": "/pages/market/home/home",
-    "my": "/pages/my/home/home"
+    "my": "/pages/my/home/home",
+    "speak": "/pages/speak/home/home"
   }
 }

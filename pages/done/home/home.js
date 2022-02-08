@@ -4,6 +4,9 @@ Component({
     addGlobalClass: true,
   },
   data: {
+   
+  },
+  methods: {
 
   }
 })
