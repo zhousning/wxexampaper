@@ -11,7 +11,7 @@
 <view class="padding">
   <form bindsubmit="bindFormSubmit">
     <view class="editor-wrap margin-bottom">
-      <textarea value="{{text}}" maxlength="-1" placeholder="好想法、好创意、好知识分享下呗" name="textarea" class="editor-textarea" />
+      <textarea value="{{text}}" maxlength="-1" placeholder="好想法、好创意、好知识分享下呗(20个字以上)" name="textarea" class="editor-textarea" />
     </view>
     <button form-type="submit" class="cu-btn bg-blue margin-tb-sm lg response shadow-blur">提交</button>
   </form>

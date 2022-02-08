@@ -27,9 +27,9 @@ Component({
                 return;
             }
 
-            if (text == null || text.trim().length == 0) {
+            if (text == null || text.trim().length < 20) {
                 wx.showToast({
-                    title: '请先填写你的想法',
+                    title: '请输入20个字以上',
                     icon: 'none',
                     duration: 2000
                 })
