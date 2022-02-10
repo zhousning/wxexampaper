@@ -3,7 +3,38 @@
   <view slot="content">答题</view>
 </cu-custom>
 
+
 <scroll-view scroll-y class="scrollPage">
+  <view class="cu-bar bg-white solid-bottom flex justify-between padding-right">
+    <view class="action ">
+      <button bindtap="error_correct" class="cu-btn bg-blue shadow-blur ">纠错</button>
+    </view>
+    <view class="action ">
+      <text class="cuIcon-calendar lg text-blue"  bindtap="answer_sheet"  data-target="bottomModal">答题卡</text>
+      <!-- <button bindtap="answer_sheet" class="cu-btn bg-blue shadow-blur " data-target="bottomModal">答题卡</button> -->
+    </view>
+  </view>
+
+  <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+    <view class="cu-dialog">
+      <view class="cu-bar bg-white">
+        <view class="action text-green" bindtap="cancelAnsSheet">取消</view>
+        <view class="action text-blue" bindtap="confirmAnsSheet">确定</view>
+      </view>
+
+      <view class="bg-white padding">
+        <scroll-view scroll-y class="scrollPage" style="height: 600rpx;">
+          <view class="cu-list grid col-5 ">
+            <view wx:for="{{questions}}" wx:key  class="{{item.choose ? 'cu-item bg-blue' : 'cu-item'}}" data-target='{{index}}' bindtap="choose_qesnum">
+              <view  class="{{item.choose ? 'text-white' : ''}}">{{index+1}}</view></view>
+          </view>
+        </scroll-view>
+      </view>
+    </view>
+  </view>
+
+
+
   <view class="cu-bar bg-white">
     <view class="weui-cell__bd margin text-lg text-content">
       <text wx:if="{{questions[current].type == '0'}}" class=" text-blue marin">[单选题]</text>
@@ -13,25 +44,25 @@
     </view>
   </view>
 
-  <radio-group wx:if="{{questions[current].type != '1'}}" bindchange="radioChange"  class="cu-list menu sm-border card-menu margin">
+  <radio-group wx:if="{{questions[current].type != '1'}}" bindchange="radioChange" class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top {{item.answer_true ? 'text-green' : ''}} {{item.answer_false ? 'text-red' : ''}}" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
       <label class="action content ">
         <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{item.checked}}"></radio>
-        <text >{{item.content}}</text>
+        <text>{{item.content}}</text>
       </label>
     </view>
   </radio-group>
 
-  <checkbox-group wx:if="{{questions[current].type == '1'}}" bindchange="checkboxChange"   class="cu-list menu sm-border card-menu margin">
+  <checkbox-group wx:if="{{questions[current].type == '1'}}" bindchange="checkboxChange" class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top {{item.answer_true ? 'text-green' : ''}} {{item.answer_false ? 'text-red' : ''}}" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
       <label class="action content ">
         <checkbox class="margin-right-sm blue sm" value="{{item.value}}" checked="{{item.checked}}"></checkbox>
-        <text>{{item.content  }}</text>
+        <text>{{item.content }}</text>
       </label>
     </view>
   </checkbox-group>
 
-  <view class="margin" wx:if="{{questions[current].type == '3'}}" >
+  <view class="margin" wx:if="{{questions[current].type == '3'}}">
     <button bindtap="showTrueAnswer" class="bg-green margin-bottom">正确答案</button>
     <text hidden="{{hiddenTrueAnswer}}" class="text-lg text-blue ">{{questions[current].answer}}</text>
   </view>

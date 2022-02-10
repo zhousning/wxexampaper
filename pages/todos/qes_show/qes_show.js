@@ -14,7 +14,8 @@ Page({
     myAnswer: '', //用于给正确答案显示绿色字体
     previous_disabled: true,
     next_disabled: false,
-    hiddenTrueAnswer: true
+    hiddenTrueAnswer: true,
+    modalName: ''
   },
   radioChange(e) {
     let current = this.data.current
@@ -33,7 +34,7 @@ Page({
       }
     }
 
-    let options = 'questions[' +current + '].options'
+    let options = 'questions[' + current + '].options'
     this.setData({
       [options]: items
     })
@@ -58,7 +59,7 @@ Page({
         }
       }
     }
-    let options = 'questions[' +current + '].options'
+    let options = 'questions[' + current + '].options'
     this.setData({
       [options]: items
     })
@@ -108,7 +109,79 @@ Page({
       })
     }
   },
-
+  //点击答题卡弹出模态框
+  answer_sheet(e) {
+    this.setData({
+      modalName: e.currentTarget.dataset.target
+    })
+  },
+  //答题卡取消按钮
+  cancelAnsSheet(e) {
+    var questions = this.data.questions
+    for (var i = 0; i < questions.length; i++) {
+      questions[i].choose = false;
+    }
+    this.setData({
+      modalName: null,
+      questions: questions
+    })
+  },
+  //答题卡确定按钮
+  confirmAnsSheet(e) {
+    var questions = this.data.questions
+    var val = null
+    var flag = false
+    for (var i = 0; i < questions.length; i++) {
+      if (questions[i].choose) {
+        val = i;
+        flag = true;
+        break;
+      }
+    }
+    if (flag) {
+      for (var i = 0; i < questions.length; i++) {
+        questions[i].choose = false;
+      }
+      var previous_disabled = true
+      var next_disabled = true
+      if (val == 0) {
+        previous_disabled = true
+      } else {
+        previous_disabled = false
+      }
+      if (val == questions.length - 1) {
+        next_disabled = true
+      } else {
+        next_disabled = false
+      }
+      this.setData({
+        modalName: null,
+        current: val,
+        questions: questions,
+        previous_disabled: previous_disabled,
+        next_disabled: next_disabled
+      })
+    } else {
+      this.setData({
+        modalName: null
+      })
+    }
+  },
+  //选择编号显示绿色背景
+  choose_qesnum(e) {
+    var val = e.currentTarget.dataset.target
+    var questions = this.data.questions
+    for (var i = 0; i < questions.length; i++) {
+      if (i == val) {
+        questions[i].choose = true;
+      } else {
+        questions[i].choose = false;
+      }
+    }
+    this.setData({
+      questions: questions
+    })
+  },
   onLoad: function (options) {
     var that = this;
     var openid = wx.getStorageSync('openid');
@@ -119,7 +192,7 @@ Page({
       title: '数据加载中',
     })
     wx.request({
-      url:  app.globalData.setting.routes.host + '/qes_banks/' + qes_lib + '/' + type + '/query_all',
+      url: app.globalData.setting.routes.host + '/qes_banks/' + qes_lib + '/' + type + '/query_all',
       header: {
         'Accept': "*/*",
         'content-type': 'application/json' // 默认值
