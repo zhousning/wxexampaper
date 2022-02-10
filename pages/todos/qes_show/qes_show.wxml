@@ -6,12 +6,34 @@
 
 <scroll-view scroll-y class="scrollPage">
   <view class="cu-bar bg-white solid-bottom flex justify-between padding-right">
-    <view class="action ">
-      <button bindtap="error_correct" class="cu-btn bg-blue shadow-blur ">纠错</button>
+    <view class="action">     
+      <text class="cuIcon-searchlist lg text-blue" bindtap="showModal" data-target="Modal">纠错</text>
+      <!-- <button bindtap="showModal" data-target="Modal" class="cu-btn bg-blue shadow-blur ">纠错</button> -->
     </view>
     <view class="action ">
-      <text class="cuIcon-calendar lg text-blue"  bindtap="answer_sheet"  data-target="bottomModal">答题卡</text>
+      <text class="cuIcon-calendar lg text-blue" bindtap="showModal" data-target="bottomModal">答题卡</text>
       <!-- <button bindtap="answer_sheet" class="cu-btn bg-blue shadow-blur " data-target="bottomModal">答题卡</button> -->
+    </view>
+  </view>
+
+  <view class="cu-modal {{modalName=='Modal'?'show':''}}">
+    <view class="cu-dialog bg-white">
+      <form bindsubmit="bindFormSubmit">
+        <view class="cu-bar bg-white">         
+          <view class="action" >
+            <button bindtap="cancelCorrect"  class="cu-btn bg-green shadow-blur">取消</button>
+            <!-- <text class="cuIcon-close text-red"></text> -->
+          </view>
+          <view class="action" >
+            <button form-type="submit"  class="cu-btn bg-blue shadow-blur">提交</button>
+          </view>
+        </view>
+        <view class="padding">
+          <view class="editor-wrap margin-bottom">
+            <textarea value="{{text}}" maxlength="-1" placeholder="问题描述(20个字以上)" name="textarea" class="editor-textarea" />
+          </view>         
+        </view>
+      </form>
     </view>
   </view>
 
@@ -25,8 +47,9 @@
       <view class="bg-white padding">
         <scroll-view scroll-y class="scrollPage" style="height: 600rpx;">
           <view class="cu-list grid col-5 ">
-            <view wx:for="{{questions}}" wx:key  class="{{item.choose ? 'cu-item bg-blue' : 'cu-item'}}" data-target='{{index}}' bindtap="choose_qesnum">
-              <view  class="{{item.choose ? 'text-white' : ''}}">{{index+1}}</view></view>
+            <view wx:for="{{questions}}" wx:key class="{{item.choose ? 'cu-item bg-blue' : 'cu-item'}}" data-target='{{index}}' bindtap="choose_qesnum">
+              <view class="{{item.choose ? 'text-white' : ''}}">{{index+1}}</view>
+            </view>
           </view>
         </scroll-view>
       </view>

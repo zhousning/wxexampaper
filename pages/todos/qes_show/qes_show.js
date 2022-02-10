@@ -15,7 +15,8 @@ Page({
     previous_disabled: true,
     next_disabled: false,
     hiddenTrueAnswer: true,
-    modalName: ''
+    modalName: '',
+    text: '', //纠错弹出框
   },
   radioChange(e) {
     let current = this.data.current
@@ -109,8 +110,8 @@ Page({
       })
     }
   },
-  //点击答题卡弹出模态框
-  answer_sheet(e) {
+  //点击弹出模态框
+  showModal(e) {
     this.setData({
       modalName: e.currentTarget.dataset.target
     })
@@ -212,5 +213,76 @@ Page({
         wx.hideLoading();
       }
     })
-  }
+  },
+  //提交纠错内容
+  bindFormSubmit: function (e) {
+    var that = this;
+    var text = e.detail.value.textarea;
+    var questions = this.data.questions;
+    var current = this.data.current;
+    var openid = wx.getStorageSync('openid');
+
+    if (text == null || text.trim().length < 20) {
+      wx.showToast({
+        title: '请输入20个字以上',
+        icon: 'none',
+        duration: 2000
+      })
+    } else {
+      wx.showLoading({
+        title: '系统正在处理中...',
+      })
+      text = '题目：' + questions[current].title + '【问题】' + text
+      wx.request({
+        url: app.globalData.setting.routes.host + '/advises/create_advise',
+        method: 'post',
+        data: {
+          text: text,
+          openid: openid
+        },
+        header: {
+          'Accept': "*/*",
+          'content-type': 'application/json' // 默认值
+        },
+        success: function (res) {
+          var status = res.data.status
+          wx.hideLoading();
+          if (status == 'success') {
+            wx.showToast({
+              title: '您的问题已收到，非常感谢您的支持。',
+              icon: 'none',
+              duration: 3000,
+              success: function () {
+                that.setData({
+                  modalName: null,
+                  text: ''
+                })
+              }
+            })
+          } else {
+            wx.showToast({
+              title: '提交失败,请重新提交',
+              icon: 'none',
+              duration: 2000
+            })
+          }
+        },
+        fail: function () {
+          wx.hideLoading();
+          wx.showToast({
+            title: '提交失败,请重新提交',
+            icon: 'none',
+            duration: 2000
+          })
+        }
+      })
+    }
+  },
+  //答题卡取消按钮
+  cancelCorrect(e) {
+    this.setData({
+      modalName: null,
+      text: ''
+    })
+  },
 })
