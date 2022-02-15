@@ -1,12 +1,16 @@
 <cu-custom bgColor="bg-blue" isBack="{{true}}">
   <view slot="backText"></view>
-  <view slot="content">答题</view>
+  <view slot="content">
+    <text wx:if="{{questions[current].type == '0'}}" class=" text-white">单选题</text>
+    <text wx:if="{{questions[current].type == '1'}}" class=" text-white">多选题</text>
+    <text wx:if="{{questions[current].type == '2'}}" class=" text-white">判断题</text>
+  </view>
 </cu-custom>
 
 
 <scroll-view scroll-y class="scrollPage">
   <view class="cu-bar bg-white solid-bottom flex justify-between padding-right">
-    <view class="action">     
+    <view class="action">
       <text class="cuIcon-searchlist lg text-blue" bindtap="showModal" data-target="Modal">纠错</text>
       <!-- <button bindtap="showModal" data-target="Modal" class="cu-btn bg-blue shadow-blur ">纠错</button> -->
     </view>
@@ -19,19 +23,19 @@
   <view class="cu-modal {{modalName=='Modal'?'show':''}}">
     <view class="cu-dialog bg-white">
       <form bindsubmit="bindFormSubmit">
-        <view class="cu-bar bg-white">         
-          <view class="action" >
-            <button bindtap="cancelCorrect"  class="cu-btn bg-green shadow-blur">取消</button>
+        <view class="cu-bar bg-white">
+          <view class="action">
+            <button bindtap="cancelCorrect" class="cu-btn bg-green shadow-blur">取消</button>
             <!-- <text class="cuIcon-close text-red"></text> -->
           </view>
-          <view class="action" >
-            <button form-type="submit"  class="cu-btn bg-blue shadow-blur">提交</button>
+          <view class="action">
+            <button form-type="submit" class="cu-btn bg-blue shadow-blur">提交</button>
           </view>
         </view>
         <view class="padding">
           <view class="editor-wrap margin-bottom">
             <textarea value="{{text}}" maxlength="-1" placeholder="问题描述(20个字以上)" name="textarea" class="editor-textarea" />
-          </view>         
+          </view>
         </view>
       </form>
     </view>
@@ -60,18 +64,20 @@
 
   <view class="cu-bar bg-white">
     <view class="weui-cell__bd margin text-lg text-content">
-      <text wx:if="{{questions[current].type == '0'}}" class=" text-blue marin">[单选题]</text>
-      <text wx:if="{{questions[current].type == '1'}}" class=" text-blue marin">[多选题]</text>
-      <text wx:if="{{questions[current].type == '2'}}" class=" text-blue marin">[判断题]</text>
-      <text>{{questions[current].title}}</text>
+
+      <!-- <text>{{questions[current].title}}</text> -->
+      <rich-text style="display: inline-block;" nodes="{{questions[current].title}}"></rich-text>
     </view>
   </view>
 
   <radio-group wx:if="{{questions[current].type != '1'}}" bindchange="radioChange" class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top {{item.answer_true ? 'text-green' : ''}} {{item.answer_false ? 'text-red' : ''}}" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
       <label class="action content ">
-        <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{item.checked}}"></radio>
-        <text>{{item.content}}</text>
+
+        <!-- <text>{{item.content}}</text> -->
+        <rich-text nodes="{{item.content}}">
+          <radio class="margin-right-sm blue sm radio" value="{{item.value}}" checked="{{item.checked}}"></radio>
+        </rich-text>
       </label>
     </view>
   </radio-group>
@@ -79,8 +85,11 @@
   <checkbox-group wx:if="{{questions[current].type == '1'}}" bindchange="checkboxChange" class="cu-list menu sm-border card-menu margin">
     <view class="cu-item margin-top {{item.answer_true ? 'text-green' : ''}} {{item.answer_false ? 'text-red' : ''}}" wx:for="{{questions[current].options}}" wx:key="{{item.id}}">
       <label class="action content ">
-        <checkbox class="margin-right-sm blue sm" value="{{item.value}}" checked="{{item.checked}}"></checkbox>
-        <text>{{item.content }}</text>
+
+        <!-- <text>{{item.content }}</text> -->
+        <rich-text nodes="{{item.content}}">
+          <checkbox class="margin-right-sm blue sm" value="{{item.value}}" checked="{{item.checked}}"></checkbox>
+        </rich-text>
       </label>
     </view>
   </checkbox-group>

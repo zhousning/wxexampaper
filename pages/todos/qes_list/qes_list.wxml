@@ -1,0 +1,15 @@
+<cu-custom bgColor="bg-blue" isBack="{{true}}">
+  <view slot="backText">返回</view>
+  <view slot="content">题库</view>
+</cu-custom>
+
+<scroll-view scroll-y class="scrollPage">
+  <view class='nav-list margin-top'>
+    <navigator  open-type="navigate" hover-class='none' url="{{item.url}}" class="nav-li bg-{{item.color}}" wx:for="{{iconList}}" wx:key>
+      <view class="nav-title">{{item.title}}</view>
+      <!-- <view class="nav-name">{{item.name}}</view> -->
+      <!-- <text class='cuIcon-{{item.icon}}'></text> -->
+    </navigator>
+  </view>
+  <view class='cu-tabbar-height'></view>
+</scroll-view>
